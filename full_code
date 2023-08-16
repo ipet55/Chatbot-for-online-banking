@@ -1,0 +1,56 @@
+import nltk
+from nltk.chat.util import Chat, reflections
+
+nltk.download("punkt")  # Download necessary NLTK data
+
+pairs = [
+    [
+        r"(.*) (bank|banking) (problem|issue)",
+        [
+            "I'm sorry to hear that you're having a banking problem. Could you please provide more details?",
+            "I'm here to help with your banking issues. Can you describe the problem you're facing?"
+        ]
+    ],
+    [
+        r"(.*) (login|log in|sign in) (problem|issue)",
+        [
+            "If you're having trouble logging in, make sure you're using the correct username and password.",
+            "Have you tried resetting your password? That might help you log in.",
+            "I can help you with login issues. Please let me know the specific problem you're facing."
+        ]
+    ],
+    [
+        r"(.*) (transaction|transfer) (problem|issue)",
+        [
+            "If you're having trouble with a transaction or transfer, please provide the transaction details so I can assist you.",
+            "I'm here to help with transactions. Could you tell me more about the problem you're experiencing?"
+        ]
+    ],
+    [
+        r"(.*) (balance|account balance) (problem|issue)",
+        [
+            "To check your account balance, log in to your online banking account or use your bank's mobile app.",
+            "You can usually find your account balance by logging in to your online banking account.",
+            "If you're facing issues with your account balance, please let me know the specific problem."
+        ]
+    ],
+    [
+        r"(.*) (help|support)",
+        [
+            "I'm here to provide support for your online banking problems. Please describe the issue you're facing.",
+            "I'm here to assist you. Could you provide more details about the problem you need help with?"
+        ]
+    ],
+    [
+        r"bye",
+        ["If you have more questions, feel free to ask. Goodbye!",]
+    ],
+]
+
+def banking_support_chatbot():
+    print("Welcome to the Online Banking Support Chatbot. How can I assist you today?")
+    chatbot = Chat(pairs, reflections)
+    chatbot.converse()
+
+if __name__ == "__main__":
+    banking_support_chatbot()
